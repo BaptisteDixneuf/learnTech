@@ -1,0 +1,7 @@
+extends ../layout
+
+block content
+	.container
+		h1 Ajouter un article
+		form(method="post", action="/articles/add")
+			include form.jade

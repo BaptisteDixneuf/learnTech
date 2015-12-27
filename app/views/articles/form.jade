@@ -1,0 +1,18 @@
+.form-group
+	label Titre
+	if article && article.title
+		input(name="title", type="text", class="form-control", value="#{article.title}") 
+	else
+		input(name="title", type="text", class="form-control") 
+.form-group		
+	label URL :
+	if article && article.url
+		input(name="url" type="text", class="form-control", value="#{article.url}")
+	else
+		input(name="url" type="text", class="form-control")
+.form-group
+	label Texte
+	textarea(name = "text", type="textarea", class="form-control")
+		if article && article.text
+			| #{article.text}
+button(type="submit", class="btn btn-default") Envoyer

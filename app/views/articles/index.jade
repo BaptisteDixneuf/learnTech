@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+	.container
+		h1 Les articles
+		a(href="/articles/insert") Insérer un article					
+		//Les articles
+		if articles
+			each article in articles
+				h1= article.title
+				p=article.text				
+				p 
+					a(href="/articles/view/#{article.id}") Voir
+				
+				

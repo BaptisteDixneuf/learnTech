@@ -1,0 +1,7 @@
+extends ../layout
+
+block content
+	.container
+		h1 Mettre à jour l'article		
+		form(method="post", action="/articles/update/#{article.id}")
+			include form.jade
