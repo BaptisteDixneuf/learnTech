@@ -38,9 +38,9 @@ router.post('/articles/add', function (req, res, next) {
 	db.Article.create(req.body).then(function(){
 		res.redirect('/articles');
 	}).catch(function(err){
-		var err = new Error(err);
-		err.status = 404;
-		next(err);
+		res.render('articles/insert', {
+			error: err
+		});
 	});
 });
 
@@ -63,6 +63,12 @@ router.get('/articles/update/:id', function (req, res, next) {
 router.post('/articles/update/:id', function (req, res, next) {
 	db.Article.update(req.body,{ where: {id:req.params.id } }).then(function(){
 		res.redirect('/articles');
+	}).catch(function(err){
+		console.log(err);
+		res.render('articles/update', {
+			article: req.body,
+			error: err
+		});
 	});
 });
 

@@ -1,18 +1,33 @@
+//- Titre
 .form-group
-	label Titre
+	label.control-label Titre
+	if error 
+		each val, index in error.errors			
+			if error.errors[index].path == "title"
+				span.help-block=error.errors[index].message
 	if article && article.title
-		input(name="title", type="text", class="form-control", value="#{article.title}") 
+		input.form-control(name="title", type="text", value="#{article.title}") 
 	else
-		input(name="title", type="text", class="form-control") 
-.form-group		
-	label URL :
-	if article && article.url
-		input(name="url" type="text", class="form-control", value="#{article.url}")
-	else
-		input(name="url" type="text", class="form-control")
+		input.form-control(name="title", type="text")
+//- url
 .form-group
-	label Texte
-	textarea(name = "text", type="textarea", class="form-control")
+	label.control-label URL :
+	if error 
+		each val, index in error.errors			
+			if error.errors[index].path == "url"
+				span.help-block=error.errors[index].message
+	if article && article.url
+		input.form-control(name="url" type="text", value="#{article.url}")
+	else
+		input.form-control(name="url" type="text")
+//- Texte
+.form-group
+	label.control-label Texte
+	if error 
+		each val, index in error.errors			
+			if error.errors[index].path == "text"
+				span.help-block=error.errors[index].message
+	textarea.form-control(name = "text", type="textarea")
 		if article && article.text
 			| #{article.text}
 button(type="submit", class="btn btn-default") Envoyer

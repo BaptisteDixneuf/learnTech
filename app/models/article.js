@@ -6,23 +6,27 @@ module.exports = function (sequelize, DataTypes) {
   var Article = sequelize.define('Article', {
     title: {
       type: DataTypes.STRING,
-      validate: {
-        allowNull: false,
-        notEmpty: true,
-        notContains: '',
+      validate:{
+        notEmpty: {
+          args: true
+        }
       }
     },
     url: {
       type: DataTypes.STRING,
-      allowNull: false,
-      notEmpty: true,
-      notContains: '',
+      validate:{
+        notEmpty: {
+          args: true
+        }
+      }
     },
     text: {
       type: DataTypes.TEXT,
-      allowNull: false,
-      notEmpty: true,
-      notContains: '',
+      validate:{
+        notEmpty: {
+          args: true
+        }
+      }
     }
   }, {
     classMethods: {
